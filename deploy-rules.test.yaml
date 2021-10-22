@@ -1,0 +1,12 @@
+rules:
+- id: jwt-verify-false
+  message: JWT library set to verify=false. This is an Auth bypass vulnerabltity
+  languages: [python]
+  severity: ERROR
+  patterns: 
+    - pattern-inside: |
+         def $FUN(...):
+          ...
+    - pattern-either:
+        - pattern: jwt.decode(..., verify=false, ...) 
+ 
